@@ -7,9 +7,21 @@ import time
 import torch
 from vidgear.gears import CamGear
 import numpy as np
+from pathlib import Path
 
-sys.path.insert(1, os.getcwd()+'/project_HRNet')
-sys.path.append(os.path.dirname(__file__))
+FILE = Path(__file__).resolve()
+ROOT_FILE = FILE.parents[0]
+ROOT, tail = os.path.split(ROOT_FILE)
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))  # add ROOT to PATH
+ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
+
+# Change path to suit your needs
+sys.path.insert(1, os.getcwd() / ROOT)
+#sys.path.append(os.path.dirname(__file__))
+#print(sys.path)
+
+
 
 from SimpleHRNet import SimpleHRNet
 from misc.visualization import draw_points, draw_skeleton, draw_points_and_skeleton, joints_dict, check_video_rotation
@@ -22,7 +34,7 @@ def main(
     hrnet_m='HRNet',
     hrnet_c=48,
     hrnet_j=17,
-    hrnet_weights='project_HRNet/weights/pose_hrnet_w48_384x288.pth',
+    hrnet_weights=str(ROOT / 'weights/pose_hrnet_w48_384x288.pth'),
     hrnet_joints_set='coco',
     image_resolution='(384, 288)',
     single_person= False,
@@ -35,7 +47,8 @@ def main(
     video_framerate=30,
     device='cuda',
     frames_directions = [], 
-    direction_changers = []):
+    direction_changers = [],
+out_path = None):
 
     overall_hit_hand = False
     overall_handball_decision = False
@@ -71,13 +84,13 @@ def main(
             video = CamGear(camera_id).start()
 
     if use_tiny_yolo:
-         yolo_model_def="./models/detectors/yolo/config/yolov3-tiny.cfg"
-         yolo_class_path="./models/detectors/yolo/data/coco.names"
-         yolo_weights_path="./models/detectors/yolo/weights/yolov3-tiny.weights"
+         yolo_model_def=str(ROOT / "models/detectors/yolo/config/yolov3-tiny.cfg")
+         yolo_class_path=str(ROOT / "models/detectors/yolo/data/coco.names")
+         yolo_weights_path=str(ROOT / "models/detectors/yolo/weights/yolov3-tiny.weights")
     else:
-         yolo_model_def="./project_HRNet/models/detectors/yolo/config/yolov3.cfg"
-         yolo_class_path="./project_HRNet/models/detectors/yolo/data/coco.names"
-         yolo_weights_path="./project_HRNet/models/detectors/yolo/weights/yolov3.weights"
+         yolo_model_def=str(ROOT / "models/detectors/yolo/config/yolov3.cfg")
+         yolo_class_path=str(ROOT / "models/detectors/yolo/data/coco.names")
+         yolo_weights_path= str(ROOT / "models/detectors/yolo/weights/yolov3.weights")
 
     model = SimpleHRNet(
         hrnet_c,
@@ -164,7 +177,7 @@ def main(
                     cv2.rectangle(temp_frame, xy1, xy2, (255,0,0), 2)
                     #cv2.rectangle(frame, xy1, xy2, (255,0,0), 2)
                     print("{} at frame {}".format(overall_msg,frame_num))
-                    cv2.imwrite('project_HRNet/outputs/decision.png',temp_frame)
+                    cv2.imwrite(out_path+'decision.png',temp_frame)
 
 
         fps = 1. / (time.time() - t)
@@ -185,7 +198,7 @@ def main(
         if save_video:
             if video_writer is None:
                 fourcc = cv2.VideoWriter_fourcc(*video_format)  # video format
-                video_writer = cv2.VideoWriter('project_HRNet/outputs/output.mp4', fourcc, video_framerate, (frame.shape[1], frame.shape[0]))
+                video_writer = cv2.VideoWriter(out_path+'output.mp4', fourcc, video_framerate, (frame.shape[1], frame.shape[0]))
             video_writer.write(frame)
 
         frame_num +=1
@@ -205,7 +218,7 @@ if __name__ == '__main__':
                                                 "resnet size (if model is PoseResNet)", type=int, default=48)
     parser.add_argument("--hrnet_j", "-j", help="hrnet parameters - number of joints", type=int, default=17)
     parser.add_argument("--hrnet_weights", "-w", help="hrnet parameters - path to the pretrained weights",
-                        type=str, default="project_HRNet/weights/pose_hrnet_w48_384x288.pth")
+                        type=str, default="./modules/handball_detection/project_HRNet/weights/pose_hrnet_w48_384x288.pth")
     parser.add_argument("--hrnet_joints_set",
                         help="use the specified set of joints ('coco' and 'mpii' are currently supported)",
                         type=str, default="coco")
