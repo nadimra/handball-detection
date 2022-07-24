@@ -1,5 +1,6 @@
 /outputs
 /project_HRNet/gifs
+/inputs
 /project_HRNet/outputs
 /project_HRNet/weights
 /project_HRNet/models/detectors/yolo/data/samples/
