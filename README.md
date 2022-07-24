@@ -1,4 +1,4 @@
-# About the project
+# Handball Detection
 **handball-detection** is a project which uses computer vision techniques to detect handballs in football matches.
 
 # Setup
@@ -22,3 +22,4 @@ python main.py
 Outputs are saved in ``/project_HRNet/outputs``. If a handball occured, an additional image ``decision.png`` will show the frame of when the handball occured. 
 
 # Acknowledgements
+Our code is built on [HRNet](https://github.com/stefanopini/simple-HRNet) and [YOLOv5](https://github.com/ultralytics/yolov5). We thank the authors for sharing their codes.
