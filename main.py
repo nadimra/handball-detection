@@ -29,6 +29,7 @@ def handball_detection(vid_path):
     """
     hit_hand,handball_decision,handball_part,handball_angle,msg = project_HRNet.scripts.live_demo.main(filename=vid_path,frames_directions=direction_changers_frames,direction_changers=direction_changers_position)
     print(msg)
+    return hit_hand,handball_decision,handball_part,handball_angle,msg
 
-vid_path = os.getcwd() +"/inputs/handball_2.mp4"
-handball_detection(vid_path)
+#vid_path = os.getcwd() +"/inputs/handball_2.mp4"
+#handball_detection(vid_path)
