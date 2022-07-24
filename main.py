@@ -1,10 +1,12 @@
-import project_yolo5.detect_simple
-import project_HRNet.scripts.live_demo
 import os
 import sys
-import pickle
 
 sys.path.insert(1, os.getcwd())
+
+import project_yolo5.detect_simple
+import project_HRNet.scripts.live_demo
+import pickle
+
 
 def handball_detection(vid_path):
     direction_changers,direction_changers_position,direction_changers_frames = project_yolo5.detect_simple.run(source=vid_path)
