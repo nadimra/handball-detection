@@ -7,7 +7,7 @@
 
 ##### HRNet Setup
 2. Go to the `project_HRNet` directory and `pip install -r requirements.txt`.
-3. Download the pretrained weights for the HRNet object detector and place it within `/project_HRNet/models/detectors/yolo/weights`. We used [darknet53](https://pjreddie.com/media/files/darknet53.conv.74).
+3. Download the pretrained weights for the HRNet object detector and place it within `/project_HRNet/models/detectors/yolo/weights`. We used [yolov3.weights](https://pjreddie.com/media/files/yolov3.weights).
 4. Download the pretrained weights for HRNet and place it within `/project_HRNet/weights`. We used [pose_hrnet_w48_384x288.pth](https://drive.google.com/open?id=1UoJhTtjHNByZSm96W3yFTfU5upJnsKiS).
 
 ##### yolo5 Setup
