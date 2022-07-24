@@ -1,0 +1,9 @@
+/outputs
+/project_HRNet/gifs
+/project_HRNet/outputs
+/project_yolo5/outputs
+/project_yolo5/runs
+/project_HRNet/models/detectors/yolo/data/samples/
+/project_HRNet/models/detectors/yolo/weights/darknet53.conv.74
+/project_HRNet/models/detectors/yolo/weights/yolov3.weights
+/project_HRNet/models/detectors/yolo/weights/yolov3-tiny.weights
