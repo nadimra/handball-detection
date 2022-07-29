@@ -1,4 +1,4 @@
-![banner](https://user-images.githubusercontent.com/36157933/180853192-bb67c9e8-86c4-4f86-a090-74d9ec6b6156.png)
+![banner](https://user-images.githubusercontent.com/36157933/181859192-3a88bc30-087f-4555-8ff8-b8ad49bde38b.png)
 
 # Handball Detection
 **handball-detection** is a project which uses computer vision techniques to detect handballs in football matches.
