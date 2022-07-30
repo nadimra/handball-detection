@@ -10,3 +10,8 @@
 /project_yolo5/outputs
 /project_yolo5/runs
 /project_yolo5/weights
+frame.png
+
+__pycache__/
+*.py[cod]
+*$py.class
