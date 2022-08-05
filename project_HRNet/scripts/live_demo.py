@@ -178,6 +178,8 @@ out_path = None):
                     #cv2.rectangle(frame, xy1, xy2, (255,0,0), 2)
                     print("{} at frame {}".format(overall_msg,frame_num))
                     cv2.imwrite(out_path+'decision.png',temp_frame)
+                elif hit_hand:
+                    print("{} at frame {}".format(overall_msg,frame_num))
 
 
         fps = 1. / (time.time() - t)
