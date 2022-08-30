@@ -23,5 +23,18 @@ python main.py
 ```
 Outputs are saved in ``/project_HRNet/outputs``. If a handball occured, an additional image ``decision.png`` will show the frame of when the handball occured. 
 
+# Snapshots
+![handbal-detection-res-1](https://user-images.githubusercontent.com/36157933/187557703-11c03fb2-b028-4600-b114-c6af6a407f8b.png)
+*Textual Output: The ball did hit the player’s hand. The decision is to award a handball since the ball hit the player’s left arm. The arm was at an angle of 78 degrees.*
+
+![handbal-detection-res-2](https://user-images.githubusercontent.com/36157933/187557707-5cb105ad-17b9-4d05-91f6-a2b8fba913b1.png)
+*Textual Output:The ball did hit the player’s hand.The decision is to award a handball since the ball hit the player’s right arm.The arm was at an angle of 50 degrees.*
+
+![handbal-detection-res-3](https://user-images.githubusercontent.com/36157933/187557709-3e0931a0-a9c6-4e76-8457-fec8e4f49f09.png)
+*Textual Output: The ball did hit the player’s hand. However, the decision is to not award a handball since the ball hit the player’s right arm at an angle of 38 degrees*
+
+![handbal-detection-res-4](https://user-images.githubusercontent.com/36157933/187557711-6cf974a7-6c49-4f0b-a77c-168116af2551.png)
+*Textual Output: The ball did hit the player’s hand. However, the decision is to not award a handball since the ball hit the player’s left arm at an angle of 14 degrees.*
+
 # Acknowledgements
 Our code is built on [HRNet](https://github.com/stefanopini/simple-HRNet) and [YOLOv5](https://github.com/ultralytics/yolov5). We thank the authors for sharing their codes.
